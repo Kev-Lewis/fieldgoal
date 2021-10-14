@@ -390,7 +390,7 @@ function update() {
     if (score > 40)
     {
       height_change = true;
-      aim_speed_y += 0.05;
+      aim_speed_y = aim_speed/2;
     }
 
     wind1 = vec(rnd(0, 100), rnd(10, 22));
