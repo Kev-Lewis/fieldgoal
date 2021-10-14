@@ -44,7 +44,7 @@ options = {
 
 let turf, yardline, endzoneLine, other_lines;
 let goalpost_pole, goalpost_crossbar, goalpost_left, goalpost_right;
-let position, aim_position, aim_right, aim_left, aim_speed;
+let position, aim_position, aim_right, aim_left, aim_speed, aim_speed_y;
 let kicking;
 let shoot_angle;
 /** @type {{pos: Vector, vel: Vector}[]} */
@@ -55,15 +55,21 @@ let ball;
 let football_frame1, football_frame2, football_frame3, football_frame4, football_frame_counter;
 let wind, wind_pixels, wind1, wind2, wind3, wind4, wind5;
 let rand;
+let height, height_change, height_up, height_down;
 
 function update() {
   // init settings
   if (!ticks) {
+    height = 40;
+    height_change = false;
+    height_up = true;
+    height_down = false;
     position = vec(49, 95);
-    aim_position = vec(49, 40);
+    aim_position = vec(49, height);
     aim_left = true;
     aim_right = false;
     aim_speed = 0.5;
+    aim_speed_y = 0.5;
     kicking = false;
     football = [];
     left_post_x = 34;
@@ -225,6 +231,24 @@ function update() {
   {
     aim_position.x += 1 * aim_speed;
   }
+  if (height_change && aim_position.y >= 70)
+  {
+    height_up = true;
+    height_down = false;
+  }
+  else if (height_change && aim_position.y <= 30)
+  {
+    height_down = true;
+    height_up= false;
+  }
+  if (height_up && height_change && !kicking)
+  {
+    aim_position.y -= 1 * aim_speed_y;
+  }
+  if (height_down && height_change && !kicking)
+  {
+    aim_position.y += 1 * aim_speed_y;
+  }
 
   // kicking animation
   if (input.isJustPressed && !kicking)
@@ -242,7 +266,7 @@ function update() {
     f.pos.add(f.vel);
     if (wind != 0)
     {
-      f.pos.x += (wind * 0.05);
+      f.vel.x += (wind * 0.001);
     }
     
     if (football_frame1)
@@ -287,7 +311,7 @@ function update() {
     }
     football_frame_counter += 1;
 
-    if (f.pos.y < 40)
+    if (f.pos.y < aim_position.y)
     {
       if (f.pos.x > left_post_x && f.pos.x < right_post_x)
       {
@@ -356,13 +380,19 @@ function update() {
     }
     else
     {
-      wind = rnd(5, 12);
+      wind = rnd(8, 12);
       rand = rnd(0, 50);
       if (rand <= 25)
       {
         wind = wind * -1;
       }
     }
+    if (score > 40)
+    {
+      height_change = true;
+      aim_speed_y += 0.05;
+    }
+
     wind1 = vec(rnd(0, 100), rnd(10, 22));
     wind2 = vec(rnd(0, 100), rnd(22, 34));
     wind3 = vec(rnd(0, 100), rnd(34, 46));
