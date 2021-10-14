@@ -291,15 +291,22 @@ function update() {
     {
       if (f.pos.x > left_post_x && f.pos.x < right_post_x)
       {
-        particle(f.pos);
+        color("light_red");
+        particle(15, 20, 100, 2, -PI / 2, 180);
+        color("light_black");
+        particle(15, 20, 50, 2, -PI / 2, 180);
+        color("light_red");
+        particle(85, 20, 100, 2, -PI / 2, 180);
+        color("light_black");
+        particle(85, 20, 50, 2, -PI / 2, 180);
         addScore(3, f.pos)
-        play("coin");
+        play("explosion");
         reset = true;
         return f;
       }
       else
       {
-        play("explosion");
+        play("laser");
         end();
       }
     }
