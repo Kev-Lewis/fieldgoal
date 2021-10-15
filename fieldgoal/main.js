@@ -56,6 +56,7 @@ let football_frame1, football_frame2, football_frame3, football_frame4, football
 let wind, wind_pixels, wind1, wind2, wind3, wind4, wind5;
 let rand;
 let height, height_change, height_up, height_down;
+let wall, fan;
 
 function update() {
   // init settings
@@ -87,7 +88,7 @@ function update() {
     wind5 = vec(50, 50);
   }
 
-  // ground and goal post
+  // ground
   color("light_green");
   turf = rect(0, 78, 100, 22);
   color("black");
@@ -114,15 +115,7 @@ function update() {
   other_lines = rect(left_post_x - 8, 86, 1, 1);
   color("black");
   other_lines = rect(right_post_x + 11, 86, 1, 1);
-  color("yellow")
-  goalpost_pole = rect(left_post_x + 15, 51, 2, 27);
-  color("yellow");
-  goalpost_crossbar = rect(left_post_x, 51, 32, 2);
-  color("yellow");
-  goalpost_left = rect(left_post_x, 16, 2, 35);
-  color("yellow");
-  goalpost_right = rect(right_post_x, 16, 2, 35);
-  color("black");
+  
 
   // wind
   if (wind != 0)
@@ -201,6 +194,17 @@ function update() {
     wind5.x = 100;
   }
 
+  // goalpost
+  color("yellow")
+  goalpost_pole = rect(left_post_x + 15, 51, 2, 27);
+  color("yellow");
+  goalpost_crossbar = rect(left_post_x, 51, 32, 2);
+  color("yellow");
+  goalpost_left = rect(left_post_x, 16, 2, 35);
+  color("yellow");
+  goalpost_right = rect(right_post_x, 16, 2, 35);
+  color("black");
+
   // football
   if (!kicking)
   {
@@ -236,7 +240,7 @@ function update() {
     height_up = true;
     height_down = false;
   }
-  else if (height_change && aim_position.y <= 30)
+  else if (height_change && aim_position.y <= 20)
   {
     height_down = true;
     height_up= false;
@@ -390,7 +394,7 @@ function update() {
     if (score > 40)
     {
       height_change = true;
-      aim_speed_y = aim_speed/2;
+      aim_speed_y += 0.05;
     }
 
     wind1 = vec(rnd(0, 100), rnd(10, 22));
