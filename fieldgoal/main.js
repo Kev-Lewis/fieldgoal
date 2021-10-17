@@ -115,8 +115,76 @@ function update() {
   other_lines = rect(left_post_x - 8, 86, 1, 1);
   color("black");
   other_lines = rect(right_post_x + 11, 86, 1, 1);
-  
+  color("black");
+  rect(10, 11, 4, 4);
+  color("black");
+  rect(15, 11, 4, 4);
+  color("black");
+  rect(20, 11, 4, 4);
+  color("black");
+  rect(25, 11, 4, 4);
+  color("black");
+  rect(10, 16, 4, 4);
+  color("black");
+  rect(15, 16, 4, 4);
+  color("black");
+  rect(20, 16, 4, 4);
+  color("black");
+  rect(25, 16, 4, 4);
+  color("black");
+  rect(10, 21, 4, 4);
+  color("black");
+  rect(15, 21, 4, 4);
+  color("black");
+  rect(20, 21, 4, 4);
+  color("black");
+  rect(25, 21, 4, 4);
+  color("black");
+  rect(10, 26, 4, 4);
+  color("black");
+  rect(15, 26, 4, 4);
+  color("light_black");
+  rect(19, 30, 1, 48);
+  color("black");
+  rect(20, 26, 4, 4);
+  color("black");
+  rect(25, 26, 4, 4);
 
+  color("black");
+  rect(71, 11, 4, 4);
+  color("black");
+  rect(76, 11, 4, 4);
+  color("black");
+  rect(81, 11, 4, 4);
+  color("black");
+  rect(86, 11, 4, 4);
+  color("black");
+  rect(71, 16, 4, 4);
+  color("black");
+  rect(76, 16, 4, 4);
+  color("black");
+  rect(81, 16, 4, 4);
+  color("black");
+  rect(86, 16, 4, 4);
+  color("black");
+  rect(71, 21, 4, 4);
+  color("black");
+  rect(76, 21, 4, 4);
+  color("black");
+  rect(81, 21, 4, 4);
+  color("black");
+  rect(86, 21, 4, 4);
+  color("black");
+  rect(71, 26, 4, 4);
+  color("black");
+  rect(76, 26, 4, 4);
+  color("light_black");
+  rect(80, 30, 1, 48);
+  color("black");
+  rect(81, 26, 4, 4);
+  color("black");
+  rect(86, 26, 4, 4);
+  
   // wind
   if (wind != 0)
   {
